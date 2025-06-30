@@ -1,4 +1,4 @@
-node ('master'){  
+node ('master') {  
    // def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -18,8 +18,8 @@ node ('master'){
     stage('Post-to-dockerhub') {
     sh 'echo Post-to-dockerhub'
      /*docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
-            app.push("latest")*/
-        			}
+            app.push("latest")
+        			}*/
          }
    /* stage('SECURITY-IMAGE-SCANNER'){
         build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
@@ -36,5 +36,4 @@ node ('master'){
         {
         build 'SECURITY-DAST-OWASP_ZAP'
         }*/
- 
-}
+ }
