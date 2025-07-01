@@ -4,7 +4,7 @@
   "description": "A multiplayer snake game built on NodeJs, Express, socket.io, JavaScript ES6, and jspm.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/simondiep/node-multiplayer-snake.git
+    "url": "https://github.com/Ibrahim661993/node-multiplayer-snake.git
   },
   "scripts": {
     "start": "node app.js",
