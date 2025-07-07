@@ -11,7 +11,7 @@ const sonarqubeScanner = require('sonarqube-scanner');
 
 sonarqubeScanner.scan(
   {
-    serverUrl: 'http://192.168.10.4:9000',
+    serverUrl: 'http://192.168.56.4:9000',
     options: {
       'sonar.sources': '.',
     }
