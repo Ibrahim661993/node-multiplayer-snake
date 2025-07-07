@@ -14,7 +14,7 @@ sonarqubeScanner.scan(
     serverUrl: 'http://192.168.56.4:9000',
    
     options: {
-       'soar.login':'74fe79d97806f01a4cb181c1e514e875b06707ab',
+      'sonar.login':'74fe79d97806f01a4cb181c1e514e875b06707ab',
       'sonar.sources': '.',
     }
   },
