@@ -12,9 +12,10 @@ const sonarqubeScanner = require('sonarqube-scanner');
 sonarqubeScanner.scan(
   {
     serverUrl: 'http://192.168.56.4:9000',
+   token: process.env.SONAR_TOKEN,
    
     options: {
-      'sonar.login':'8b523babbaac718a4ce12442a2c3bf3786088783',
+     // 'sonar.login':'8b523babbaac718a4ce12442a2c3bf3786088783',
       'sonar.sources': '.',
     }
   },
