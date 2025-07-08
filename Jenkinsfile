@@ -7,7 +7,12 @@ node ('Ubuntu-app-agent') {
     /*stage('SAST'){
         build 'SECURITY-SAST-SNYK'
     }*/ 
-
+    stage('SonarQube Analysis') {
+          withEnv(["SONAR_TOKEN=${credentials('sonar_token')}"]) {
+              sh 'npm install'
+              sh 'npm run sonar'
+        }
+    }
     
     stage('Build-and-Tag') {
         
