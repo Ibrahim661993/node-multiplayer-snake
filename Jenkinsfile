@@ -36,6 +36,24 @@ node ('Ubuntu-app-agent') {
          sh "docker-compose down"
          sh "docker-compose up -d"	
       }
+    stage('DAST - OWASP ZAP Scan') {
+        // Lance le scan ZAP via docker
+        sh '''
+          docker pull zaproxy/zap-stable
+          docker run --rm --security-opt seccomp=unconfined --network=host -v $PWD:/zap/wrk/:rw zaproxy/zap-stable zap-baseline.py -t http://192.168.56.4:80 -r zap_report.html || true
+        '''
+    }
+
+    stage('Publish ZAP Report') {
+        publishHTML (target: [
+            reportDir: '.', 
+            reportFiles: 'zap_report.html', 
+            reportName: 'OWASP ZAP Report', 
+            allowMissing: false, 
+            alwaysLinkToLastBuild: true, 
+            keepAll: true
+        ])
+    }
     
     /*stage('DAST')
         {
