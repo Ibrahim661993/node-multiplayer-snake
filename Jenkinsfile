@@ -4,9 +4,9 @@ node ('Ubuntu-app-agent') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
-    /*stage('SAST'){
+    stage('SAST'){
         build 'SECURITY-SAST-SNYK'
-    }*/ 
+    }*
   stage('SonarQube Analysis') {
     withCredentials([usernamePassword(credentialsId: 'sonar_token', usernameVariable: 'SONAR_USER', passwordVariable: 'SONAR_TOKEN')]) {
         sh 'npm install'
@@ -36,7 +36,7 @@ node ('Ubuntu-app-agent') {
          sh "docker-compose down"
          sh "docker-compose up -d"	
       }
-    stage('DAST - OWASP ZAP Scan') {
+    /*stage('DAST - OWASP ZAP Scan') {
         // Lance le scan ZAP via docker
         sh '''
           docker pull zaproxy/zap-stable
@@ -53,7 +53,11 @@ node ('Ubuntu-app-agent') {
             alwaysLinkToLastBuild: true, 
             keepAll: true
         ])
-    }
+    }*/
+    stage('DAST - OWASP ZAP Scan') {
+    build 'SECURITY-DAST-ZAP-FREESTYLE'
+}
+
     
     /*stage('DAST')
         {
