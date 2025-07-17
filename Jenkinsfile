@@ -7,6 +7,16 @@ node ('Ubuntu-app-agent') {
     stage('SAST'){
         build 'SECURITY-SAST-SNYK'
     }
+
+
+    stage('SAST - Snyk Scan') {
+    steps {
+        build job: 'SECURITY-SAST-SNYK', parameters: [
+            string(name: 'REPO_URL', value: 'https://github.com/Ibrahim661993/le nom du projet.git'),
+            string(name: 'BRANCH', value: 'main')
+        ]
+    }
+}
   stage('SonarQube Analysis') {
     withCredentials([usernamePassword(credentialsId: 'sonar_token', usernameVariable: 'SONAR_USER', passwordVariable: 'SONAR_TOKEN')]) {
         sh 'npm install'
