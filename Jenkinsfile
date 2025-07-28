@@ -17,11 +17,14 @@ node ('Ubuntu-app-agent') {
         ]
     }
 }*/
-  stage('SonarQube Analysis') {
+ /* stage('SonarQube Analysis') {
     withCredentials([usernamePassword(credentialsId: 'sonar_token', usernameVariable: 'SONAR_USER', passwordVariable: 'SONAR_TOKEN')]) {
         sh 'npm install'
         sh 'npm run sonar'
     }
+}*/
+stage('SonarQube Analysis') {
+    build 'Sonar-Qube'
 }
     
     stage('Build-and-Tag') {
