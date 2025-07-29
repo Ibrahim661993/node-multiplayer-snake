@@ -46,7 +46,7 @@ stage('SonarQube Analysis') {
 
 properties([
   parameters([
-    string(name: 'GIT_REPO_URL', defaultValue: '', description: 'URL du dépôt Git'),
+    string(name: 'REPO_URL', defaultValue: '', description: 'URL du dépôt Git'),
     string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'ibrahim661993/snake', description: 'Nom de l\'image Docker à créer')
   ])
 ])
@@ -55,7 +55,7 @@ node('Ubuntu-app-agent') {
   def app
 
   stage('Cloner le code') {
-    git url: params.GIT_REPO_URL, branch: 'main'
+    git url: params.REPO_URL, branch: 'main'
   }
 
   stage('SAST') {
