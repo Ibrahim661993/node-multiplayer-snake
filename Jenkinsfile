@@ -77,7 +77,7 @@ node('Ubuntu-app-agent') {
   }
 
   stage('Déploiement avec docker-compose') {
-    sh 'docker-compose down || true'
+    sh 'docker-compose down'
     sh 'docker-compose up -d'
   }
 
