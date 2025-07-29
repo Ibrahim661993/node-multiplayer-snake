@@ -62,14 +62,10 @@ node('Ubuntu-app-agent') {
     build 'SECURITY-SAST-SNYK'
   }
 
- /* stage('SonarQube Analysis') {
+  stage('SonarQube Analysis') {
     build 'Sonar-Qube'
-  }*/
-    stage('SonarQube Analysis') {
-    build job: 'Sonar-Qube', parameters: [
-      string(name: 'REPO_URL', value: params.REPO_URL)
-    ]
   }
+   
 
   stage('Build image Docker') {
     app = docker.build(params.DOCKER_IMAGE_NAME)
@@ -90,5 +86,4 @@ node('Ubuntu-app-agent') {
     build 'SECURITY-DAST-ZAP-FREESTYLE'
   }
 }
-
 
