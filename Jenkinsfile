@@ -55,7 +55,7 @@ node('Ubuntu-app-agent') {
   def app
 
   stage('Cloner le code') {
-    git url: params.REPO_URL, branch: 'main'
+    git url: params.REPO_URL, branch: 'master'
   }
 
   stage('SAST') {
