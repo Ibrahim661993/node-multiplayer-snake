@@ -47,7 +47,7 @@ stage('SonarQube Analysis') {
 properties([
   parameters([
     string(name: 'REPO_URL', defaultValue: '', description: 'URL du dépôt Git'),
-    string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'ibrahim661993/snake', description: 'Nom de l\'image Docker à créer')
+    string(name: 'DOCKER_IMAGE_NAME', defaultValue: '', description: 'Nom de l\'image Docker à créer')
   ])
 ])
 
